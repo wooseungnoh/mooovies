@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as Font from 'expo-font'
-import { Text, Image, View } from "react-native";
+import { Text, Image, View, StatusBar } from "react-native";
 import { AppLoading } from "expo";
 import {NavigationContainer} from '@react-navigation/native'
 import { Asset } from "expo-asset";
@@ -30,9 +30,12 @@ export default function App() {
   };
   const onFinish = () => setIsReady(true);
   return isReady ? (
+    <>
     <NavigationContainer>
       <Stack />
     </NavigationContainer>
+    <StatusBar barStyle="light-content"/>
+    </>
   ) : (
     <AppLoading
       startAsync={loadAssets}
