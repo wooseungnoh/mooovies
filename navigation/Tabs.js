@@ -10,7 +10,7 @@ import { Platform } from "react-native";
 const Tabs = createBottomTabNavigator();
 
 const getHeaderName = (route) =>
-  route?.state?.routeNames[route.state.index] || "Movies";
+  route?.state?.routeNames[route.state.index] || "Tv";
 
 export default ({ route, navigation }) => {
   useLayoutEffect(() => {
