@@ -6,23 +6,27 @@ import Slide from "../../component/Movies/Slide";
 import Title from "../../component/Title";
 import { ScrollView } from "react-native-gesture-handler";
 import Vertical from "../../component/Vertical";
+import Horizontal from "../../component/Horizontal";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 
 const SliderContainer = styled.View`
-  width: ${WIDTH}px;
+  width: 100%;
   height: ${HEIGHT / 4}px;
   margin-bottom: 50px;
 `;
 
 const Container = styled.View``;
+const UpcomingCOntainer = styled.View`
+  margin-top: 20px;
+`;
 
-export default ({ loading, nowPlaying, popular }) => {
+export default ({ loading, nowPlaying, popular, upComing }) => {
   return (
     <ScrollView
       style={{ backgroundColor: "black" }}
       contentContainerStyle={{
-        flex: 1,
+        flex: loading ? 1 : "auto",
         justifyContent: loading ? "center" : "flex-start",
       }}
     >
@@ -48,13 +52,14 @@ export default ({ loading, nowPlaying, popular }) => {
           <Container>
             <Title title={"Popular Movies"} />
             <ScrollView
-              style={{ marginTop: 20 }}
+              style={{ marginTop: 20, marginBottom: 40 }}
               contentContainerStyle={{ paddingLeft: 20 }}
               horizontal
               showsHorizontalScrollIndicator={false}
             >
               {popular.map((movie) => (
                 <Vertical
+                  id={movie.id}
                   key={movie.id}
                   poster={movie.poster_path}
                   title={movie.title}
@@ -62,6 +67,19 @@ export default ({ loading, nowPlaying, popular }) => {
                 />
               ))}
             </ScrollView>
+            <Title title={"Comming Soon"} />
+            <UpcomingCOntainer>
+              {upComing.map((movie) => (
+                <Horizontal
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.title}
+                  releaseDate={movie.release_date}
+                  poster={movie.poster_path}
+                  overview={movie.overview}
+                />
+              ))}
+            </UpcomingCOntainer>
           </Container>
         </>
       )}
