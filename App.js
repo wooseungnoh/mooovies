@@ -22,7 +22,7 @@ export default function App() {
   const [isReady, setIsReady] = useState(false);
   const loadAssets = () => {
     const images = cacheImages([
-      "https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?ixlib=rb-1.2.1&w=1000&q=80",
+      "https://images.unsplash.com/photo-1513797839453-8d1e735369ca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       require("./assets/splash.png"),
     ]);
     const fonts = cacheFont([Ionicons.font]);

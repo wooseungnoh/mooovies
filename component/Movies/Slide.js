@@ -62,11 +62,11 @@ const Slide = ({ id, title, backgroundImage, votes, overview, poster }) => (
     <Content>
       <Poster url={poster} />
       <Data>
-        <Title>{trimText(title, 40)}</Title>
+        <Title>{trimText(title, 25)}</Title>
         <VotesContainer>
           <Votes votes={votes} />
         </VotesContainer>
-        <Overview>{trimText(overview, 100)}</Overview>
+        <Overview>{trimText(overview, 70)}</Overview>
         <TouchableOpacity>
           <Button>
             <ButtonText>View Details</ButtonText>
@@ -80,7 +80,7 @@ const Slide = ({ id, title, backgroundImage, votes, overview, poster }) => (
 Slide.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  backgroundImage: PropTypes.string.isRequired,
+  backgroundImage: PropTypes.string,
   votes: PropTypes.number.isRequired,
   overview: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, Button } from "react-native";
 import { movieApi } from "../../api";
-import MoviesPresenter from './MoviesPresenter'
+import MoviesPresenter from "./MoviesPresenter";
 
 export default () => {
+  const [refreshing, setRefreshing] = useState(false);
   const [movies, setMovies] = useState({
-    loading:true,
+    loading: true,
     nowPlaying: [],
     nowPlayingError: null,
     popular: [],
@@ -18,7 +19,7 @@ export default () => {
     const [popular, popularError] = await movieApi.popular();
     const [upComing, upComingError] = await movieApi.upcoming();
     setMovies({
-      loading:false,
+      loading: false,
       nowPlaying,
       popular,
       upComing,
@@ -30,7 +31,6 @@ export default () => {
   useEffect(() => {
     getData();
   }, [getData]);
-  return (
-    <MoviesPresenter {...movies}/>
-  );
+
+  return <MoviesPresenter refreshFn={getData} {...movies} />;
 };
