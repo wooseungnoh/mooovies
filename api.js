@@ -29,7 +29,7 @@ export const movieApi = {
     getAnything("/movie/popular", { region: "kr", language: "ko" }),
   upcoming: () =>
     getAnything("/movie/upcoming", { region: "kr", language: "ko" }),
-  search: (query) => getAnything("/search/movie", { query }),
+  search: (query) => getAnything("/search/movie", { query, language: "ko" }),
   movie: (id) => getAnything(`/movie/${id}`),
   discover: () => getAnything("/discover/movie"),
 };

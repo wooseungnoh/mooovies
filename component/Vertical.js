@@ -6,6 +6,7 @@ import Votes from "./Votes";
 import Poster from "./Poster";
 import { TouchableOpacity } from "react-native";
 import { trimText } from "../utils";
+import { useNavigation } from "@react-navigation/native";
 
 const Container = styled.View`
   align-items: center;
@@ -18,15 +19,21 @@ const Title = styled.Text`
   margin-bottom: 5px;
 `;
 
-const Vertical = ({ poster, title, votes, id }) => (
-  <TouchableOpacity>
-    <Container>
-      <Poster url={poster} />
-      <Title>{trimText(title, 10)}</Title>
-      {votes > 0 && <Votes votes={votes} />}
-    </Container>
-  </TouchableOpacity>
-);
+const Vertical = ({ poster, title, votes, id }) => {
+  const navigation = useNavigation();
+  const goTodetail = () => {
+    navigation.navigate("Detail", { id, title, votes });
+  };
+  return (
+    <TouchableOpacity onPress={goTodetail}>
+      <Container>
+        <Poster url={poster} />
+        <Title>{trimText(title, 10)}</Title>
+        {votes > 0 && <Votes votes={votes} />}
+      </Container>
+    </TouchableOpacity>
+  );
+};
 
 Vertical.propTypes = {
   id: PropTypes.number.isRequired,
