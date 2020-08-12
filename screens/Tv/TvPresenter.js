@@ -28,6 +28,7 @@ export default ({ refreshFn, loading, popular, topRated, today, thisWeek }) => (
       <HorizontalSlider title="Popular Shows">
         {popular.map((shows) => (
           <Vertical
+            isTv={true}
             id={shows.id}
             key={shows.id}
             poster={shows.poster_path}
@@ -36,10 +37,11 @@ export default ({ refreshFn, loading, popular, topRated, today, thisWeek }) => (
           />
         ))}
       </HorizontalSlider>
-      <Slider element={thisWeek} />
+      <Slider isTv={true} element={thisWeek} />
       <HorizontalSlider title="Top Rated">
         {topRated.map((shows) => (
           <Vertical
+            isTv={true}
             id={shows.id}
             key={shows.id}
             poster={shows.poster_path}
@@ -51,6 +53,7 @@ export default ({ refreshFn, loading, popular, topRated, today, thisWeek }) => (
       <List title="Airing Today">
         {today.map((show) => (
           <Horizontal
+            isTv={true}
             key={show.id}
             id={show.id}
             title={show.name}

@@ -19,10 +19,10 @@ const Title = styled.Text`
   margin-bottom: 5px;
 `;
 
-const Vertical = ({ poster, title, votes, id }) => {
+const Vertical = ({ isTv = false, poster, title, votes, id }) => {
   const navigation = useNavigation();
   const goTodetail = () => {
-    navigation.navigate("Detail", { id, title, votes });
+    navigation.navigate("Detail", { isTv, id, title, votes, poster });
   };
   return (
     <TouchableOpacity onPress={goTodetail}>

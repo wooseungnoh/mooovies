@@ -7,7 +7,7 @@ import ScrollContainer from "../../component/ScrollContainer";
 
 export default ({ movies, shows, keyword, onSubmit, onChange }) => (
   <ScrollContainer
-  refreshFn={onSubmit}
+    refreshFn={onSubmit}
     loading={false}
     contentContainerStyle={{
       paddingTop: 10,
@@ -36,6 +36,7 @@ export default ({ movies, shows, keyword, onSubmit, onChange }) => (
       <HorizontalSlider title={"Tv results"}>
         {shows.map((show) => (
           <Vertical
+            isTv={true}
             key={show.id}
             id={show.id}
             votes={show.vote_average}
