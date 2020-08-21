@@ -10,7 +10,7 @@ import { Platform } from "react-native";
 const Tabs = createBottomTabNavigator();
 
 const getHeaderName = (route) =>
-  route?.state?.routeNames[route.state.index] || "Tv";
+  route?.state?.routeNames[route.state.index] || "Movies";
 
 export default ({ route, navigation }) => {
   useLayoutEffect(() => {
@@ -41,10 +41,10 @@ export default ({ route, navigation }) => {
         borderTopColor:'black'
       }
     }}>
-      <Tabs.Screen name="Tv" component={Tv} />
-      <Tabs.Screen name="Movies" component={Movies} />
-      <Tabs.Screen name="Search" component={Search} />
       <Tabs.Screen name="Discovery" component={Favs} />
+      <Tabs.Screen name="Movies" component={Movies} />
+      <Tabs.Screen name="Tv" component={Tv} />
+      <Tabs.Screen name="Search" component={Search} />
     </Tabs.Navigator>
   );
 };
